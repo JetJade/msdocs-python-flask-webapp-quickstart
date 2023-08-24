@@ -4,6 +4,8 @@ from flask import (Flask, redirect, render_template, request,
                    send_from_directory, url_for)
 
 app = Flask(__name__)
+import main_2
+
 
 
 @app.route('/')
@@ -26,6 +28,12 @@ def hello():
    else:
        print('Request for hello page received with no name or blank name -- redirecting')
        return redirect(url_for('index'))
+   
+@app.route('/execute_function')
+def execute_function():
+    # Call your Python function here
+    result = main_2.create_pdf()
+    return result
 
 
 if __name__ == '__main__':
